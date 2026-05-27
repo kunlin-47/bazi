@@ -35,7 +35,7 @@ bazi/
 ├── bazi-static-analysis_1.json          # 静态分析（_meta + 基础 + 八字 + 十神 + 旺衰 + 不从原因）
 ├── bazi-static-analysis_2.json          # 静态分析（格局 + 空亡 + 触发钩子 + 地支动态 + 五行）
 ├── bazi-static-analysis_3.json          # 静态分析（性格 + 男命专属 + 神煞 + 大运 + 总结）
-├── 南方排八字专业程序.txt                # 原始排盘软件输出（八字推演的输入源）
+├── 南方排八字专业程序.txt                # 原始排盘软件输出 · GB18030 编码 · 冻结证据快照（AI 不直接读取）
 │
 ├── ziwei/                               # 紫微斗数（隔离，不参与八字推演）
 │   ├── README.md
@@ -55,6 +55,8 @@ bazi-static-analysis_{1,2,3}.json （AI 易读的结构化基准）
         ↓ 后续可扩展
 单步大运的逐年流年聚焦 / 已发生事件校验 / ...
 ```
+
+> **关于 `南方排八字专业程序.txt` 的角色定位**：本文件为 GB18030 编码的**证据快照**，**冻结不动、不做精简**。AI 不直接消费此文件，所有 AI 化分析以 `bazi-static-analysis_{1,2,3}.json` 为唯一入口。txt 仅在需要回溯"软件原本说了什么、我们为什么剔除某段"时作为旁证查阅。剔除决策在 `bazi-static-analysis_1.json._meta.stance_on_software_outputs` 中显式记录。
 
 ## 三层职责
 
