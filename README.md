@@ -1,0 +1,91 @@
+# bazi —— 八字推演项目
+
+## 项目定位
+
+针对**单一命主**的子平八字推演项目。从专业排盘软件原始输出出发，经过 AI 化处理生成结构化静态分析文件，再做大运 / 流年等动态推演。
+
+**项目仅做八字解盘**——排盘由专业软件（《南方排八字专业程序》）完成，本项目不做排盘。紫微斗数命盘资料隔离在 `ziwei/` 目录下，**不参与**八字推演。
+
+## 与同类项目的关系
+
+本项目结构借鉴了 [`kunlin-47/xty`](https://github.com/kunlin-47/xty) 的三层分离设计（methodology + prompts + 命主数据），并增补了 xty 没有的「**原始排盘软件输出 → AI 静态分析文件**」处理方法论（见 [`methodology/raw_paipan_processing.md`](./methodology/raw_paipan_processing.md)）。
+
+**关键差异**：
+
+- xty 是多命主回归测试集（`charts/chart_xxx/`），本项目专注单一命主，命主数据直接平铺在仓库根目录
+- xty 默认从已准备好的 `static_chart.json` 开始，本项目多了一步「原始软件输出 → 静态文件」的过滤与重构
+- xty 包含完整助运体系（数字 / 颜色 / 方位 / 饮食），本项目当前阶段不做助运，先聚焦"原始排盘 → 静态分析 → 大运整体"的核心链路
+
+## 目录结构
+
+```
+bazi/
+├── README.md                            # 本文件 · 项目总说明
+├── methodology/                         # 知识层（通用，跨命主复用）
+│   ├── README.md
+│   ├── basics.md                        # 概念语义层（按戊土日主举例）
+│   ├── lookup_tables.md                 # 硬数据查表（藏干、十神矩阵、刑冲合害等）
+│   └── raw_paipan_processing.md         # ★ 本仓库特有：原始排盘 → 静态分析的方法论
+├── prompts/                             # 任务指令层
+│   ├── README.md
+│   ├── static_extraction.md             # 原始排盘 → 静态分析 JSON
+│   └── dayun_overview.md                # 大运整体分析（不下沉流年）
+│
+├── 八字静态分析说明.md                   # 本命主静态分析的入口文档
+├── bazi-static-analysis_1.json          # 静态分析（_meta + 基础 + 八字 + 十神 + 旺衰 + 不从原因）
+├── bazi-static-analysis_2.json          # 静态分析（格局 + 空亡 + 触发钩子 + 地支动态 + 五行）
+├── bazi-static-analysis_3.json          # 静态分析（性格 + 男命专属 + 神煞 + 大运 + 总结）
+├── 南方排八字专业程序.txt                # 原始排盘软件输出（八字推演的输入源）
+│
+├── ziwei/                               # 紫微斗数（隔离，不参与八字推演）
+│   ├── README.md
+│   └── 文墨天机紫微斗数*
+│
+└── .kiro/steering/workflow.md           # 协作工作流偏好
+```
+
+## 处理链路
+
+```
+南方排八字专业程序.txt （原始软件输出，含黑箱与不合理项）
+        ↓ 按 prompts/static_extraction.md 处理
+bazi-static-analysis_{1,2,3}.json （AI 易读的结构化基准）
+        ↓ 按 prompts/dayun_overview.md 处理
+大运整体分析（八步大运总览，不下沉流年）
+        ↓ 后续可扩展
+单步大运的逐年流年聚焦 / 已发生事件校验 / ...
+```
+
+## 三层职责
+
+| 层 | 内容 | 变动频率 | 谁读 |
+|---|---|---|---|
+| `methodology/` | 知识与推理规则（通用） | 演进式修订 | 人 + AI |
+| `prompts/` | 任务级完整指令 | 跟随任务定义演进 | AI（必读） |
+| 命主数据（仓库根 + `ziwei/`） | 原始排盘 + 静态分析 + 各任务产出 | 跑测时更新 | AI（输入参考）+ 人（验证） |
+
+**约束**：命主特定的发现（如"这个命主的火库怎么开"）只写入命主数据层，**不反向污染 methodology**。验证有普适性后才升级为通用规则。
+
+## 当前进度
+
+- [x] 静态分析文件三文件拆分（`bazi-static-analysis_{1,2,3}.json`）
+- [x] methodology 三大文件（basics / lookup_tables / raw_paipan_processing）
+- [x] prompts 三大文件（README / static_extraction / dayun_overview）
+- [ ] 大运整体分析产出（按 `prompts/dayun_overview.md` 跑）
+- [ ] 单步大运的流年聚焦（远期）
+- [ ] 助运体系 / 发展地点 / 验前事 等扩展（远期）
+
+## 工作流
+
+当前阶段**直接在 `main` 上修改并提交，不走「新分支 + PR」流程**。详见 [`.kiro/steering/workflow.md`](./.kiro/steering/workflow.md)。
+
+## 命主代号
+
+本仓库专注于单一命主的分析，命主姓名为**假名**，直接出现在分析文档中无需脱敏。
+
+## 阅读建议
+
+1. 不熟悉八字术语 → 先读 [`methodology/basics.md`](./methodology/basics.md)
+2. 想看处理"为什么这么过滤"的原则 → 读 [`methodology/raw_paipan_processing.md`](./methodology/raw_paipan_processing.md)
+3. 想看本命主的核心结构判断 → 读 [`八字静态分析说明.md`](./八字静态分析说明.md) 与 `bazi-static-analysis_*.json`
+4. 想看大运整体走势 → 读 `大运整体分析.md`（待产出）
