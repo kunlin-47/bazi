@@ -45,7 +45,8 @@
       "用神主线：火为第一用神（制伤、暖局、生身），土为第二喜神（固本、承泄）",
       "忌神主线：金已成势不宜再增；水为条件忌神（须以火土先立为前提）",
       "原局核心矛盾：伤官输出之锐 vs 印星调护之虚 → 才气有结构但稳定性不足"
-    ]
+    ],
+    "_judgment_authority": "core_judgments 字段为命局核心判断的单一真相源（single source of truth）。下列两处为派生展示，措辞调整时以本字段为准并联动更新：(1) bazi-static-analysis_3.json 的 summary.key_logic（机制级展开版）；(2) 八字静态分析说明.md §3 核心结构判断（人类阅读摘要版）。当 core_judgments 改动时，必须同步检查这两处是否仍与之一致。"
   },
 
   "basic_info": {
