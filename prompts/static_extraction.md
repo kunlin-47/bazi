@@ -135,7 +135,7 @@
 
 - 文件 1：`_meta` + `basic_info` + `bazi` + `ten_gods_mapping` + `chart_topology` + `day_master_strength` + `not_following_reason`
 - 文件 2：`structure_analysis` + `void_branches_impact` + `structure_activation_hooks` + `branch_dynamics` + `elements`
-- 文件 3：`personality_profile` + `male_specific` / `female_specific` + `shensha_analysis` + `auxiliary` + `dayun` + `key_years_for_dynamic_analysis` + `summary`
+- 文件 3：`personality_profile` + `male_specific` / `female_specific` + `shensha_analysis` + `dayun` + `key_years_for_dynamic_analysis` + `summary`
 
 每个文件都是独立合法的 JSON。
 
