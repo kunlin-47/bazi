@@ -6,14 +6,15 @@
 
 > **设计原则反思（2026-05）**：早期曾把"任务方法论"独立到 `methodology/<任务>方法论.md`，与 prompt 分两份维护。实践证明这是过度抽象——任务方法论不会跨任务复用，分两份只增加 AI 读取负担和维护成本。统一回归"prompt 自包含"原则。
 >
-> 已合并：`methodology/验前事方法论.md` → `prompts/验前事.md`。
-> 待合并：`methodology/raw_paipan_processing.md` → `prompts/static_extraction.md`。
+> 已合并：
+> - `methodology/验前事方法论.md` → `prompts/验前事.md`
+> - `methodology/raw_paipan_processing.md` → `prompts/八字静态分析.md`（同时英文名改中文）
 
 ## 文件清单
 
 | 文件 | 任务 |
 |---|---|
-| `static_extraction.md` | 从原始排盘软件文本输出生成静态分析 JSON 文件 |
+| `八字静态分析.md` | 从原始排盘软件文本输出生成静态分析 JSON 文件（含黑箱剔除原则）|
 | `dayun_overview.md` | 大运整体分析（八步大运总览，不下沉流年） |
 | `验前事.md` | 反向推断已发生事件 + 命主校验对话（两层架构：原局断事 + 流年触发）|
 
@@ -54,7 +55,7 @@ prompt 中需要用到 methodology 中的**知识**（硬数据 / 概念 / 断�
 一份 prompt 解决一类任务，并且**显式声明"不做什么"**。例如：
 
 - `dayun_overview.md` 只做八步大运的整体性质，**不下沉到流年级**
-- `static_extraction.md` 只做"原始软件输出 → 静态文件"的转换，**不做任何吉凶推演**
+- `八字静态分析.md` 只做"原始软件输出 → 静态文件"的转换，**不做任何吉凶推演**
 
 任务之间的工作流和输出格式天然不同，强行统一会失去约束力。
 

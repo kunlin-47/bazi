@@ -36,7 +36,7 @@ charts/<命主>/验前事.md
 
 | 层级 | 任务 | 对应 prompt | 命主级产出 |
 |---|---|---|---|
-| 数据准备 | 原始排盘 → 静态分析 | `prompts/static_extraction.md` | `八字静态分析_{1,2,3}.json` |
+| 数据准备 | 原始排盘 → 静态分析 | `prompts/八字静态分析.md` | `八字静态分析_{1,2,3}.json` |
 | 大运层 | 八步大运总览 | `prompts/dayun_overview.md` | `大运整体分析.md` |
 | 流年层 | 单步大运逐年聚焦 | `prompts/流年分析.md` | `大运{干支}_流年分析.md` |
 | 反向校验 | 验前事推断 | `prompts/验前事.md` | `验前事.md` |
@@ -54,7 +54,7 @@ charts/<命主>/验前事.md
 ## 阅读建议
 
 - 不熟悉八字术语 → 先读 `methodology/basics.md`
-- 想看处理"为什么这么过滤"的原则 → 读 `methodology/raw_paipan_processing.md`
+- 想看处理"为什么这么过滤"的原则 → 读 `prompts/八字静态分析.md` §四–六（黑箱剖析 + 剔除/保留原则）
 - 想看某命主的核心结构判断 → 读 `charts/<命主>/八字静态分析_*.json`
 - 想看某命主大运整体走势 → 读 `charts/<命主>/大运整体分析.md`
 - 想看反向校验 → 读 `charts/<命主>/验前事.md`

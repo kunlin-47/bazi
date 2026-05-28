@@ -20,7 +20,7 @@
 | 角色 | 文件 / 目录 | 出自 |
 |---|---|---|
 | AI 元数据入口 | `README.md`（本文）| 手写 |
-| 真相源·静态命局 | [`八字静态分析_1.json`](./八字静态分析_1.json)<br>[`八字静态分析_2.json`](./八字静态分析_2.json)<br>[`八字静态分析_3.json`](./八字静态分析_3.json) | [`prompts/static_extraction.md`](../../prompts/static_extraction.md) |
+| 真相源·静态命局 | [`八字静态分析_1.json`](./八字静态分析_1.json)<br>[`八字静态分析_2.json`](./八字静态分析_2.json)<br>[`八字静态分析_3.json`](./八字静态分析_3.json) | [`prompts/八字静态分析.md`](../../prompts/八字静态分析.md) |
 | 产出·大运层 | [`大运整体分析_1.md`](./大运整体分析_1.md)<br>[`大运整体分析_2.md`](./大运整体分析_2.md)<br>[`大运整体分析_3.md`](./大运整体分析_3.md) | [`prompts/dayun_overview.md`](../../prompts/dayun_overview.md) |
 | 产出·流年层 | `大运{干支}_流年分析.md`（按大运段一份）| `prompts/流年分析.md`（未建立）|
 | 产出·验前事 | [`验前事.md`](./验前事.md) | `prompts/验前事.md`（未建立）|

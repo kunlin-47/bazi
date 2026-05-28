@@ -18,7 +18,6 @@ methodology 是仓库的**核心资产**——所有 prompts 和命主分析文�
 |---|---|---|
 | `basics.md` | 概念解释 + 推理逻辑（散文式） | 人为主，AI 辅读 |
 | `lookup_tables.md` | 结构化硬数据（表格 / 矩阵） | AI 必查，人参考 |
-| `raw_paipan_processing.md` | 原始排盘软件输出 → AI 静态分析文件的处理方法论 | 人 + AI（**待迁移到 `prompts/static_extraction.md`**，参见演化机制注）|
 | `传统断语集.md` | 机制清晰可循的传统命理断语字典（按十神组织 + 维度反查）| AI 按需查询 |
 
 ## 边界规则
@@ -79,7 +78,7 @@ methodology 的修订要**保守 + 可追溯**：
 1. **修订动机要明确**：每次 commit message 必须说明"为什么改"——是修正错误、补充缺漏、还是吸收实测发现。
 2. **流派分歧的处理**：当传统命理多个流派对同一问题答案不一致时，选定一派作为主线，并在文末注明"本仓库采用 X 派 / X 经典作为主线"。本仓库当前主线为**子平派 + 《子平真诠》/《滴天髓》**。
 3. **新发现要先写到命主层**：从某个命主的实测中发现某条规则（如"特定结构的火库怎么开"），先写到该命主的分析文档；多命主验证有普适性后才升级为通用规则进入本目录。
-4. **任务方法论不进 methodology**：曾经收录的 `验前事方法论.md` 已合并回 `prompts/验前事.md`（任务自包含）；`raw_paipan_processing.md` 也属任务方法论，未来会同样合并到 `prompts/static_extraction.md`，届时本目录退出。
+4. **任务方法论不进 methodology**：曾经收录的 `验前事方法论.md` 与 `raw_paipan_processing.md` 已分别合并回 `prompts/验前事.md` 和 `prompts/八字静态分析.md`（任务自包含）。methodology 现在严守"纯知识层"边界，不再混入任务规则。
 
 ## 引用规范
 
@@ -89,7 +88,6 @@ methodology 的修订要**保守 + 可追溯**：
 methodology/lookup_tables.md
 methodology/basics.md
 methodology/传统断语集.md
-methodology/raw_paipan_processing.md   # 待迁移
 ```
 
 不要在 prompts 中复制 methodology 的内容，始终通过引用，避免双份维护。
