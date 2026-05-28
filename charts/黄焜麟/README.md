@@ -1,10 +1,10 @@
-# 八字静态分析 · 命主入口文档
+# 命主：黄焜麟（八字推演入口）
 
-> 本文档是命主八字静态分析的**入口与导读**。
+> 本文档是**命主目录**的入口与导读，覆盖：基本信息、静态分析文件清单、核心结构判断速览、与原排盘软件输出的对照、动态产出索引。
 >
-> 通用方法论（黑箱剔除原则、神煞过滤原则、文件格式约定等）已升级为 [`methodology/raw_paipan_processing.md`](./methodology/raw_paipan_processing.md)，本文件不再重复。
+> 通用方法论（黑箱剔除原则、神煞过滤原则、文件格式约定等）已升级为 [`methodology/raw_paipan_processing.md`](../../methodology/raw_paipan_processing.md)，本文件不再重复。
 >
-> 通用八字概念解释见 [`methodology/basics.md`](./methodology/basics.md)，硬数据查表见 [`methodology/lookup_tables.md`](./methodology/lookup_tables.md)。
+> 通用八字概念解释见 [`methodology/basics.md`](../../methodology/basics.md)，硬数据查表见 [`methodology/lookup_tables.md`](../../methodology/lookup_tables.md)。
 
 ---
 
@@ -28,7 +28,7 @@
 
 ## 2. 静态分析文件清单
 
-按 [`methodology/raw_paipan_processing.md`](./methodology/raw_paipan_processing.md) §四的三文件拆分约定：
+按 [`methodology/raw_paipan_processing.md`](../../methodology/raw_paipan_processing.md) §四的三文件拆分约定：
 
 | 文件 | 内容 |
 |------|------|
@@ -90,7 +90,7 @@
 
 > **说明**：原 txt 为 GB18030 编码的**冻结证据快照**，本项目不对其做精简、改写或重新生成；AI 也不直接读取它。本节是该 txt 在 JSON 层的处理结果**对照表**——剔除 / 保留 / 改名收录的决策已显式落地到 `八字静态分析_1.json` 的 `_meta.stance_on_software_outputs` 字段，本节仅做速览。
 
-按 [`methodology/raw_paipan_processing.md`](./methodology/raw_paipan_processing.md) §二剔除原则，本静态分析对原始输出的处理见 `八字静态分析_1.json` 的 `_meta.stance_on_software_outputs` 字段。要点速览：
+按 [`methodology/raw_paipan_processing.md`](../../methodology/raw_paipan_processing.md) §二剔除原则，本静态分析对原始输出的处理见 `八字静态分析_1.json` 的 `_meta.stance_on_software_outputs` 字段。要点速览：
 
 | 软件输出 | 处理 | 详见字段 |
 |---------|------|---------|
@@ -105,7 +105,30 @@
 | 《穷通宝鉴》调候用神（戊土秋月喜丙癸） | **有限采用**："丙"取为正用（与本造扶抑结论一致），"癸/水"按本造金气成势之实情降为**条件忌神** | `tiaohou_vs_fuyi_reconciliation` |
 | 魁罡日（戊戌为四魁罡之一） | **保留**，规则可循（特定日柱组合）；本造身偏弱致魁罡效力打折，但忌冲机制仍是关键动态触发 | `day_pillar_qualities.kuigang` |
 
-## 6. 静态 vs 动态分工
+## 6. 命主硬数据速查（从通用查表派生）
+
+为便于动态分析阶段直接查阅，把本命主常用速查汇总如下。所有项均按 [`methodology/lookup_tables.md`](../../methodology/lookup_tables.md) 中的通用规则推出。
+
+| 项 | 值 | 推导依据 |
+|---|---|---|
+| 日主旺衰参考点 | 戊在酉为死地 | §十一 长生十二宫 |
+| 戊土禄位 | 巳 | §13.1 禄神 |
+| 戊土帝旺 | 午（原局无） | §十一 |
+| 戊土长生 | 寅（原局无） | §十一 |
+| 戊土墓 | 戌（即日支） | §十一 |
+| 戊土羊刃 | 午（原局无） | §13.2 |
+| 日柱旬空 | 辰、巳 | §十二（戊戌在甲午旬） |
+| 年柱旬空 | 申、酉 | §十二（辛巳在甲戌旬，旁证） |
+| 所属三合局（以日支戌起） | 寅午戌火局 | §13.3-§13.5 |
+| 将星 | 午（原局无） | §13.3 |
+| 华盖 | 戌（即日支✓） | §13.4 |
+| 驿马 | 申（即时支✓） | §13.5 |
+| 文昌 | 申（即时支✓） | §13.6 |
+| 天乙贵人 | 丑、未（原局无） | §13.7 |
+| 月德（生于酉月，巳酉丑金局月） | 庚 | §13.8 |
+| 天德（生于酉月） | 寅（原局无） | §13.8 |
+
+## 7. 静态 vs 动态分工
 
 | 项目 | 静态文件 | 动态分析 |
 |------|----------|----------|
@@ -119,15 +142,15 @@
 | 具体大运 / 流年吉凶 | ❌ | ✅ |
 | 婚姻 / 子女 / 健康 / 事业的具体事件预测 | ❌ | 谨慎，须有清晰机制证据链 |
 
-下游分析任务的指令在 [`prompts/`](./prompts/)：
+下游分析任务的指令在 [`prompts/`](../../prompts/)：
 
-- 大运整体分析 → [`prompts/dayun_overview.md`](./prompts/dayun_overview.md)
-- 静态分析重跑 → [`prompts/static_extraction.md`](./prompts/static_extraction.md)
+- 大运整体分析 → [`prompts/dayun_overview.md`](../../prompts/dayun_overview.md)
+- 静态分析重跑 → [`prompts/static_extraction.md`](../../prompts/static_extraction.md)
 
-## 7. 维护
+## 8. 维护
 
 - 修订静态分析文件时同步检查 `_meta.stance_on_software_outputs`，判断新增字段是否需要纳入或剔除
 - 修订核心判断（格局、用神主线、魁罡、印根命运）时同步更新三处：(1) `八字静态分析_1.json::_meta.core_judgments`（真相源）、(2) `八字静态分析_3.json::summary.key_logic`（机制级展开版）、(3) 本文 §3（人类阅读摘要版）。当 `core_judgments` 改动时，必须同步检查这两处是否仍与之一致（详见 file 1 `_meta._judgment_authority` 字段）
-- 神煞过滤原则在 [`methodology/lookup_tables.md`](./methodology/lookup_tables.md) §十三集中维护
+- 神煞过滤原则在 [`methodology/lookup_tables.md`](../../methodology/lookup_tables.md) §十三集中维护
 - 动态分析阶段如发现需补充的"已成 / 待发"地支关系，回写到 `八字静态分析_2.json`，保持"静态文件 = 真相之源"
 - 大运虚岁口径统一：所有大运区间一律按虚岁标注（9, 19, 29, …, 79, 89），不混用实岁（命主实岁 8 岁 3 月 1 天起运）
