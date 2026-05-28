@@ -13,7 +13,8 @@ methodology 是仓库的**核心资产**——所有 prompts 和命主分析文�
 | `basics.md` | 概念解释 + 推理逻辑（散文式） | 人为主，AI 辅读 |
 | `lookup_tables.md` | 结构化硬数据（表格 / 矩阵） | AI 必查，人参考 |
 | `raw_paipan_processing.md` | 原始排盘软件输出 → AI 静态分析文件的处理方法论 | 人 + AI |
-| `验前事方法论.md` | 验前事任务（反向推断已发生高能量事件）的通用方法论 | 人 + AI |
+| `验前事方法论.md` | 验前事任务（反向推断已发生事件）的通用方法论 | 人 + AI |
+| `传统断语集.md` | 机制清晰可循的传统命理断语字典（按十神组织 + 维度反查）| AI 按需查询 |
 
 ## 边界规则
 
@@ -100,6 +101,7 @@ methodology/lookup_tables.md
 methodology/basics.md
 methodology/raw_paipan_processing.md
 methodology/验前事方法论.md
+methodology/传统断语集.md
 ```
 
 不要在 prompts 中复制 methodology 的内容，始终通过引用，避免双份维护。
