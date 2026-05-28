@@ -53,48 +53,9 @@ prompt 中需要用到 methodology 的内容时，**指明引用路径**，让 A
 
 所有 prompt 都假设排盘已经由专业软件完成，输入是原始排盘文本或已生成的 `八字静态分析_*.json`。prompt 中**不写任何排盘公式或步骤**。
 
-## Prompt 内部结构模板
+## Prompt 内部结构
 
-每份 prompt 推荐按以下结构组织：
-
-```markdown
-# {任务名称}
-
-## 角色
-你是一位专业的中国传统四柱八字命理研究者...
-
-## 任务
-{一句话描述要做什么}
-
-## 边界（明确不做什么）
-- ❌ 不下沉到 X 层
-- ❌ 不引入 Y 类型推演
-- ❌ 不照搬 Z 案例的具体结论
-
-## 输入
-- {必备项}
-- {可选项}
-
-## 知识引用
-- methodology/lookup_tables.md          # 必查
-- methodology/basics.md                 # 选查
-- methodology/raw_paipan_processing.md  # 选查（仅 static_extraction 用）
-
-## 工作流
-1. ...
-2. ...
-
-## 输出格式
-按以下结构输出 Markdown / JSON ：
-1. ...
-2. ...
-
-## 约束
-- 不使用宿命式表述
-- 古今术语首次出现需用现代汉语翻译
-- 结论必须展示推演过程
-- ...
-```
+每份 prompt 大致包含：角色 / 任务 / 边界 / 输入 / 知识引用 / 工作流 / 输出格式 / 约束。新增 prompt 时参照 `static_extraction.md` 与 `dayun_overview.md` 的现有结构组织即可，不强制套统一模板。
 
 ## 演化机制
 
