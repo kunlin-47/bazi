@@ -51,7 +51,7 @@ prompt 中需要用到 methodology 的内容时，**指明引用路径**，让 A
 
 ### 原则 4：不让 AI 排盘
 
-所有 prompt 都假设排盘已经由专业软件完成，输入是原始排盘文本或已生成的 `bazi-static-analysis_*.json`。prompt 中**不写任何排盘公式或步骤**。
+所有 prompt 都假设排盘已经由专业软件完成，输入是原始排盘文本或已生成的 `八字静态分析_*.json`。prompt 中**不写任何排盘公式或步骤**。
 
 ## Prompt 内部结构模板
 

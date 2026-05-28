@@ -32,9 +32,9 @@ bazi/
 │   └── dayun_overview.md                # 大运整体分析（不下沉流年）
 │
 ├── 八字静态分析说明.md                   # 本命主静态分析的入口文档
-├── bazi-static-analysis_1.json          # 静态分析（_meta + 基础 + 八字 + 十神 + 旺衰 + 不从原因）
-├── bazi-static-analysis_2.json          # 静态分析（格局 + 空亡 + 触发钩子 + 地支动态 + 五行）
-├── bazi-static-analysis_3.json          # 静态分析（性格 + 男命专属 + 神煞 + 大运 + 总结）
+├── 八字静态分析_1.json                   # 静态分析（_meta + 基础 + 八字 + 十神 + 旺衰 + 不从原因）
+├── 八字静态分析_2.json                   # 静态分析（格局 + 空亡 + 触发钩子 + 地支动态 + 五行）
+├── 八字静态分析_3.json                   # 静态分析（性格 + 男命专属 + 神煞 + 大运 + 总结）
 ├── 南方排八字专业程序.txt                # 原始排盘软件输出 · GB18030 编码 · 冻结证据快照（AI 不直接读取）
 │
 ├── ziwei/                               # 紫微斗数（隔离，不参与八字推演）
@@ -49,14 +49,14 @@ bazi/
 ```
 南方排八字专业程序.txt （原始软件输出，含黑箱与不合理项）
         ↓ 按 prompts/static_extraction.md 处理
-bazi-static-analysis_{1,2,3}.json （AI 易读的结构化基准）
+八字静态分析_{1,2,3}.json （AI 易读的结构化基准）
         ↓ 按 prompts/dayun_overview.md 处理
 大运整体分析（八步大运总览，不下沉流年）
         ↓ 后续可扩展
 单步大运的逐年流年聚焦 / 已发生事件校验 / ...
 ```
 
-> **关于 `南方排八字专业程序.txt` 的角色定位**：本文件为 GB18030 编码的**证据快照**，**冻结不动、不做精简**。AI 不直接消费此文件，所有 AI 化分析以 `bazi-static-analysis_{1,2,3}.json` 为唯一入口。txt 仅在需要回溯"软件原本说了什么、我们为什么剔除某段"时作为旁证查阅。剔除决策在 `bazi-static-analysis_1.json._meta.stance_on_software_outputs` 中显式记录。
+> **关于 `南方排八字专业程序.txt` 的角色定位**：本文件为 GB18030 编码的**证据快照**，**冻结不动、不做精简**。AI 不直接消费此文件，所有 AI 化分析以 `八字静态分析_{1,2,3}.json` 为唯一入口。txt 仅在需要回溯"软件原本说了什么、我们为什么剔除某段"时作为旁证查阅。剔除决策在 `八字静态分析_1.json._meta.stance_on_software_outputs` 中显式记录。
 
 ## 三层职责
 
@@ -70,7 +70,7 @@ bazi-static-analysis_{1,2,3}.json （AI 易读的结构化基准）
 
 ## 当前进度
 
-- [x] 静态分析文件三文件拆分（`bazi-static-analysis_{1,2,3}.json`）
+- [x] 静态分析文件三文件拆分（`八字静态分析_{1,2,3}.json`）
 - [x] methodology 三大文件（basics / lookup_tables / raw_paipan_processing）
 - [x] prompts 三大文件（README / static_extraction / dayun_overview）
 - [ ] 大运整体分析产出（按 `prompts/dayun_overview.md` 跑）
@@ -85,9 +85,15 @@ bazi-static-analysis_{1,2,3}.json （AI 易读的结构化基准）
 
 本仓库专注于单一命主的分析，命主姓名为**假名**，直接出现在分析文档中无需脱敏。
 
+## 命名约定
+
+- **单一命主**：本仓库所有命主数据文件**不带命主前缀**（不出现 `chart_001/` `命主A_*` 等命名）。命主数据直接平铺在仓库根目录。
+- **若未来需扩展为多命主**：按目录隔离（`命主A/`、`命主B/`），而非靠文件名前缀区分。届时再调整结构，当前阶段**不为可能性预留命名复杂度**。
+- 命主级产出文件用中文命名（如 `八字静态分析_*.json`、`大运整体分析_*.md`），与通用框架（英文命名的 `methodology/`、`prompts/`）形成视觉区分。
+
 ## 阅读建议
 
 1. 不熟悉八字术语 → 先读 [`methodology/basics.md`](./methodology/basics.md)
 2. 想看处理"为什么这么过滤"的原则 → 读 [`methodology/raw_paipan_processing.md`](./methodology/raw_paipan_processing.md)
-3. 想看本命主的核心结构判断 → 读 [`八字静态分析说明.md`](./八字静态分析说明.md) 与 `bazi-static-analysis_*.json`
+3. 想看本命主的核心结构判断 → 读 [`八字静态分析说明.md`](./八字静态分析说明.md) 与 `八字静态分析_*.json`
 4. 想看大运整体走势 → 读 `大运整体分析.md`（待产出）
