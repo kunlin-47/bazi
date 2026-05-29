@@ -2,7 +2,7 @@
 
 ## 角色
 
-存放**可复用、跨命主、跨任务共享的八字命理知识**——纯知识库，不含任务调度规则。被 `prompts/` 按需引用，被命主目录 / AI 作为参考资料。
+存放**可复用、跨命主、跨任务共享的八字命理知识**——纯知识库，不含任务调度规则。被 `prompts/` 按需引用，作为命主分析与 AI 推演的**必读知识基础**。
 
 methodology 是仓库的**核心资产**——所有 prompts 和命主分析文档都建立在它之上。演化要谨慎、要有积累。
 
@@ -16,7 +16,7 @@ methodology 是仓库的**核心资产**——所有 prompts 和命主分析文�
 
 | 文件 | 性质 | 主要受众 |
 |---|---|---|
-| `basics.md` | 概念解释 + 推理逻辑（散文式） | 人为主，AI 辅读 |
+| `basics.md` | 概念解释 + 推理逻辑（散文式） | 人 + AI 都必读 |
 | `lookup_tables.md` | 结构化硬数据（表格 / 矩阵） | AI 必查，人参考 |
 | `传统断语集.md` | 机制清晰可循的传统命理断语字典（按十神组织 + 维度反查）| AI 按需查询 |
 
@@ -82,12 +82,22 @@ methodology 的修订要**保守 + 可追溯**：
 
 ## 引用规范
 
-`prompts/` 中引用 methodology 文件时，使用相对路径：
+引用 methodology 文件时使用相对路径，**注意层级深度不同**：
 
-```
-methodology/lookup_tables.md
-methodology/basics.md
-methodology/传统断语集.md
-```
+- 从 `prompts/` 引用（一层 `../`）：
 
-不要在 prompts 中复制 methodology 的内容，始终通过引用，避免双份维护。
+  ```
+  ../methodology/lookup_tables.md
+  ../methodology/basics.md
+  ../methodology/传统断语集.md
+  ```
+
+- 从 `charts/<命主>/` 引用（两层 `../../`）：
+
+  ```
+  ../../methodology/lookup_tables.md
+  ../../methodology/basics.md
+  ../../methodology/传统断语集.md
+  ```
+
+不要在 prompts 或 charts 中复制 methodology 的内容，始终通过引用，避免双份维护。
